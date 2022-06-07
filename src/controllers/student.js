@@ -26,10 +26,14 @@ async function addStudent(req, res){
     //data validation
     //use Student model creat a new student
     const student = new Student({firstName, lastName, email});
-    //insert student to database
-    await student.save()
-    //deal with error
-    return res.status(201).json(student);
+    // try {
+        //insert student to database
+      await student.save()
+      //deal with error
+      return res.status(201).json(student);
+    // } catch (e) {
+    //   return res.status(400).json(e);
+    // }
 }
 
 async function updateStudentsById(req, res){
@@ -90,6 +94,7 @@ async function addStudentToCourse(req, res) {
     if (!student || !course) {
       return res.status(404).json({ error: 'student or course not found' });
     }
+    // student.courses.includes(code)
     student = await Student.findByIdAndUpdate(
       id,
       { $pull: { courses: code } },
