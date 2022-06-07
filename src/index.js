@@ -22,10 +22,11 @@ app.use(express.json());
 
 app.use('/v1', v1Router);
 
+connectToDB();
+
+//error middlewares always set at the end of all logics. 
 app.use(validationErrorHandler);
 app.use(errorHandler);
-
-connectToDB();
 
 app.listen(PORT,()=>{logger.info(`server is listening on port: ${PORT}`)}); //Will log the message in the format in logger.js
 
