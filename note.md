@@ -41,3 +41,18 @@ Joi chosen!
 Mongoose accept validation in models schema -> only validate content before save it into database
 Normal way -> validate schema in controllers or a separate file-> validate data before request 
 
+# encrypt decrypt hash
+
+password -> encrypt -> secret
+                         ||
+password <- decrypt <- secret
+
+password -> hash -> secret, the secret can never be decrypt back to the password  chosen!
+
+hash + salt 
+
+
+# login
+
+
+
