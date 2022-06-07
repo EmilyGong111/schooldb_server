@@ -1,4 +1,5 @@
 const User = require('../models/user');
+const { generateToken } = require('../utils/jwt');
 
 async function register(req, res) {
     const {username, password} = req.body;
@@ -6,8 +7,10 @@ async function register(req, res) {
     //hash password
     await user.hashPassword();
     await user.save();
-    return res.status(201).json(user);
+    const token = await generateToken({ username });
+    return res.json({ token });
 }
+
 async function login(req, res) {
     const { username, password } = req.body;
     const existingUser = await User.findOne({ username }).exec();
@@ -19,8 +22,8 @@ async function login(req, res) {
     if (!isPasswordValid) {
       return res.status(401).json({ error: 'invalid password' });
     }
-    // const token = await generateToken({ username });
-    return res.json({ username });
+    const token = await generateToken({ username });
+    return res.json({ token });
   }
 module.exports = {
     register,
