@@ -86,7 +86,12 @@ config script
 ```
 ## AWS
 ### elasticbeanstalk
-create app -> name: school-db | platform: node.js | sample application
+create app -> name: school-db && platform: node.js && sample application -> create success - Health 
 
-### deploy permission
-add .npmrc file to solve AWS deploy problem.
+### deploy permission (server code)
+add .npmrc file in server root folder to solve AWS deploy problem.
+
+### code pipeline
+to auto deploy server.
+listen our code repo, if something changed, pull the code and update the code to elasticbeanstalk, then the elasticbeanstalk will start a new server.
+create pipeline -> name && new service && next -> Source-GitHub version2 -> connect to GitHub - give a name -> Authorize -> back to pipeline page -> install a new app -> choose the repo -> install -> back to pipeline -> connect -> Choose repo name && Branch name && next -> skip build stage -> deploy - AWS Elastic Beanstalk && Region- ..(Sydney) && Application name && environment name && next -> Create pipeline

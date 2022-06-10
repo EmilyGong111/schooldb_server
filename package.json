@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "pm2 start src/index.js --name schooldb",
+    "poststart": "pm2 log schooldb",
     "stop":"pm2 stop schooldb",
     "dev":"nodemon src/index.js"
   },
