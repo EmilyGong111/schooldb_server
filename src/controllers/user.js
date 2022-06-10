@@ -22,7 +22,8 @@ async function login(req, res) {
     if (!isPasswordValid) {
       return res.status(401).json({ error: 'invalid password' });
     }
-    const token = await generateToken({ username });
+    //assign token
+    const token = await generateToken({ username, role: existingUser.role });
     return res.json({ token });
   }
 module.exports = {

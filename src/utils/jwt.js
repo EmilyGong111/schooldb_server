@@ -6,4 +6,11 @@ function generateToken(payload) {
   return jwt.sign(payload, JWT_KEY, { expiresIn: '1h' });
 }
 
-module.exports = { generateToken };
+function validateToken(token) {
+  try{
+    return jwt.verify(token, JWT_KEY);//return payload
+  }catch (e) {
+    return null;//most time because token is out of date.
+  }
+}
+module.exports = { generateToken, validateToken };

@@ -54,5 +54,5 @@ hash + salt
 
 # login
 
-
+controllers-user -> generateToken -> routes-index -> middlewares-authGuard -> validateToken -> routes-student
 

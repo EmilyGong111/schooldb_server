@@ -2,13 +2,16 @@ const {Schema, model} = require('mongoose');
 const bcrypt = require('bcrypt');
 
 const schema = new Schema({
-    username:{
+    username: {
         type: String,
         required: true,
     },
-    password:{
+    password: {
         type: String,
         required: true,
+    },
+    role: {
+        type: String,
     }
 })
 // hash password
