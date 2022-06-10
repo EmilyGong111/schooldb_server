@@ -85,3 +85,8 @@ config script
   }
 ```
 ## AWS
+### elasticbeanstalk
+create app -> name: school-db | platform: node.js | sample application
+
+### deploy permission
+add .npmrc file to solve AWS deploy problem.
