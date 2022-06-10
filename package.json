@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon src/index.js"
+    "start": "pm2 start src/index.js --name schooldb",
+    "stop":"pm2 stop schooldb",
+    "dev":"nodemon src/index.js"
   },
   "author": "",
   "license": "ISC",

@@ -54,5 +54,26 @@ hash + salt
 
 # login
 
-controllers-user -> generateToken -> routes-index -> middlewares-authGuard -> validateToken -> routes-student
+controllers-user -> generateToken -> routes-index -> middlewares-authGuard -> validateToken -> routes-student -> middlewares-adminGuard -> routes-student-add student
 
+# deploy
+mongoDB -> AWS
+## create cloud mongoDB database
+mongoDB cloud -> create account -> create project -> create database -> create database user (who can get access to the database, normally is our server) 
+## test to see if can be connect
+ click connect button on cloud mongoDB database webpage -> copy connect string to mongdoDB compass -> replace <password> to the real password (created database user password) -> click connect button on local mongoDB compass user interface -> can see the database
+## deploy tool
+when server got some thing wrong then can restart our server
+PM2 chosen!
+```js
+npm i pm2
+```
+config script
+```js
+  "scripts": {
+    "start": "pm2 start src/index.js --name schooldb",
+    "poststart": "pm2 log schooldb",//auto run after start command, to log the start.
+    "stop":"pm2 stop schooldb",
+    "dev":"nodemon src/index.js"
+  }
+```
