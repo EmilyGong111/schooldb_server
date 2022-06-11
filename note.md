@@ -87,6 +87,8 @@ config script
 ## AWS
 ### elasticbeanstalk
 create app -> name: school-db && platform: node.js && sample application -> create success - Health 
+why elasticbeanstalk not EC2?
+EC2 is empty, need to build the environment. While elasticbeanstalk install the environment for us. It is much easy. 
 
 ### deploy permission (server code)
 add .npmrc file in server root folder to solve AWS deploy problem.
@@ -94,4 +96,15 @@ add .npmrc file in server root folder to solve AWS deploy problem.
 ### code pipeline
 to auto deploy server.
 listen our code repo, if something changed, pull the code and update the code to elasticbeanstalk, then the elasticbeanstalk will start a new server.
-create pipeline -> name && new service && next -> Source-GitHub version2 -> connect to GitHub - give a name -> Authorize -> back to pipeline page -> install a new app -> choose the repo -> install -> back to pipeline -> connect -> Choose repo name && Branch name && next -> skip build stage -> deploy - AWS Elastic Beanstalk && Region- ..(Sydney) && Application name && environment name && next -> Create pipeline
+
+create pipeline -> name && new service && next -> Source-GitHub version2 -> connect to GitHub - give a name -> Authorize -> back to pipeline page -> install a new app -> choose the repo -> install -> back to pipeline -> connect -> Choose repo name && Branch name && next -> skip build stage -> deploy - AWS Elastic Beanstalk && Region- ..(Sydney) && Application name && environment name && next -> Create pipeline -> it will deploy the server by default, once it success, next step...
+
+elasticbeanstalk -> Schooldb-env ->Configration ->software edit ->
+
+name              | value
+CONNECTION_STRING | mongodb+srv://node:p3rZjm6R8mggz26f@cluster0.pthy6.mongodb.net/schooldb ->from mongoDB connection URL
+JWT_KEY           | y0sGGgX8YmsXmShA1T1IsQOEInBv6gvQKJ3zWwsUFYalli4ARHx2IwhvU2dvbVwJNda85Og+wHeQGsJzpYWoyvsYh1NruQA9n4MuEcH/2EAcNo8kGhuxVgKhe8/j1rrxgMg/NIcpEsIoehQfM7kh65y60IMQg9Lt/ckuTxqFV0NTrr8qbbwkzezO4jBakwH/LQV6WFmeohOv0CWWa1ceLg4ep5NQkeeS5Ursa2lyFGN1cLU7UiDs6iFrtffsZbKQ7g8XHMU1KpZnU+1FqfiMDC6WUtvp0dFRll5tANhsFt52CMQ23W8QAEoUHgG7x6pKGR8S5ANgZ4J3vuiGZoxJuA==   -> $ openssl rand 256 | base64 
+
+-> Apply
+
+
